@@ -1,0 +1,141 @@
+body {
+  margin: 0;
+  height: 100vh;
+  background: radial-gradient(circle at top, #0f172a, #020617);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family: 'Segoe UI', sans-serif;
+}
+
+
+.container {
+  display: flex;
+  gap: 40px;
+}
+
+/* card */
+.card {
+  width: 300px;
+  height: 400px;
+  perspective: 1500px;
+
+  input {
+    display: none;
+  }
+
+  input:checked ~ .card-inner {
+    transform: rotateY(180deg);
+  }
+}
+
+.card-inner {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  transform-style: preserve-3d;
+  transition: 1s;
+}
+
+
+.card-front,
+.card-back {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  border-radius: 20px;
+  overflow: hidden;
+  backface-visibility: hidden;
+}
+
+
+.card-front {
+  background-size: cover;
+  background-position: center;
+  transform: translateZ(0);
+
+  .overlay {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(to top, rgba(0,0,0,0.8), transparent);
+  }
+
+  .content {
+    position: absolute;
+    bottom: 20px;
+    left: 20px;
+    color: white;
+
+    h2 {
+      margin: 0;
+      font-size: 24px;
+    }
+
+    p {
+      opacity: 0.8;
+      margin-bottom: 10px;
+    }
+  }
+}
+
+
+.card:hover .card-front {
+  box-shadow: 0 0 30px rgba(0, 255, 255, 0.4);
+  transform: scale(1.03);
+  transition: 0.4s;
+}
+
+/* BACK */
+.card-back {
+  background: linear-gradient(145deg, #020617, #111827);
+  color: white;
+  transform: rotateY(180deg);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  h2 {
+    margin-bottom: 10px;
+  }
+}
+
+.spec {
+  opacity: 0.8;
+  margin: 4px 0;
+}
+
+.price {
+  margin-top: 10px;
+  font-size: 22px;
+  color: #00f0ff;
+}
+
+
+.btn {
+  display: inline-block;
+  padding: 10px 20px;
+  border-radius: 30px;
+  border: 1px solid #00f0ff;
+  color: #00f0ff;
+  cursor: pointer;
+  transition: 0.3s;
+
+  &:hover {
+    background: #00f0ff;
+    color: black;
+    box-shadow: 0 0 20px #00f0ff;
+  }
+}
+
+.back {
+  margin-top: 20px;
+  border-color: #ff4d6d;
+  color: #ff4d6d;
+
+  &:hover {
+    background: #ff4d6d;
+    color: white;
+  }
+}
